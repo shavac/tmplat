@@ -1,0 +1,21 @@
+#! /bin/bash
+
+for i in *
+do
+    [ -d $i ] || continue
+    echo 1 > /proc/sys/vm/drop_caches
+    pushd . > /dev/null
+    cd $i
+    echo -n "$PWD/d.sh: "
+    timeout 40s time -f %e --output=tm.out ./d.sh > 1.out 2> 1.err &
+    wait
+    RET=$?
+    if [ $RET -eq 124 ]; then
+	echo "timeout."
+    elif [ $RET -ne 0 ]; then
+	echo "failed"
+    else
+	cat tm.out
+    fi
+    popd > /dev/null
+done
