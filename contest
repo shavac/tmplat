@@ -3,7 +3,7 @@
 for i in *
 do
     [ -d $i ] || continue
-    echo 1 > /proc/sys/vm/drop_caches
+    echo 3 > /proc/sys/vm/drop_caches
     pushd . > /dev/null
     cd $i
     echo -n "$PWD/d.sh: "
