@@ -1,6 +1,6 @@
 #!/bin/bash
 date >> "result"
-path="/var"
+path="/usr/share/doc"
 tmp="/tmp/mydir"
 
 mkdir -p $tmp
