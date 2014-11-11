@@ -4,8 +4,7 @@ LOGFILE=repeatedfile.log
 
 
 echo '' > $LOGFILE
-ls -alR $SEARCHPATH 2>/dev/null | awk '$1 ~ /^-/ {print $5,$9}' | awk '$1>0' | grep -v '^$' | grep -v '^4096 .$'
-| grep -v '^4096 ..$' | sort -nr | uniq -c | awk '$1>1 {print $3}' | while read FILENAME
+ls -alR $SEARCHPATH 2>/dev/null | awk '$1 ~ /^-/ {print $5,$9}' | awk '$1>0' | grep -v '^$' | grep -v '^4096 .$'| grep -v '^4096 ..$' | sort -nr | uniq -c | awk '$1>1 {print $3}' | while read FILENAME
 do
     firstfile=0
     find $SEARCHPATH -name $FILENAME -ls | awk '$3 ~/^-/ {print $11}' | sort -n | while read FULLFILENAME

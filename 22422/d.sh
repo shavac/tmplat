@@ -16,8 +16,7 @@ printf "%s:%s:%sn" $_hash "$_filename" $_size >> $_log
 export -f chksum
 export tmp
 find $path -type f | xargs -I{} bash -c 'chksum "{}"';
-find $tmp -type f -name "*.log" |sort -r|xargs cat |sort -k1 |awk  ' 
-
+find $tmp -type f -name "*.log" |sort -r|xargs cat |sort -k1 |awk  '
 BEGIN{count=1;i=1;j=0;FS=":"}
     {           
         if (count ==1) #handle the first line
@@ -58,3 +57,4 @@ BEGIN{count=1;i=1;j=0;FS=":"}
   }
 
 rm -rf "$tmp/*.log"
+'

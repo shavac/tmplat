@@ -15,7 +15,7 @@ do
     elif [ $RET -ne 0 ]; then
 	echo "failed"
     else
-	cat tm.out
+	echo $(cat tm.out)
     fi
     popd > /dev/null
 done
